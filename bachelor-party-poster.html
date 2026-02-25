@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>单身夜派对 · Bobby & Yang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #F5F0E8;
+      --text: #1a1a1a;
+      --accent: #c45c5c;
+      --accent-light: #e8a0a0;
+    }
+
+    body {
+      margin: 0;
+      padding: 1rem;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      font-size: clamp(14px, 3.5vw, 18px);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .poster {
+      width: 100%;
+      max-width: 420px;
+      padding: 1.5rem;
+      position: relative;
+      border: 3px solid var(--text);
+      border-radius: 255px 15px 255px 15px / 15px 255px 15px 255px;
+      background: var(--bg);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border: 1px solid var(--accent-light);
+      border-radius: 255px 20px 255px 20px / 20px 255px 20px 255px;
+      pointer-events: none;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .disco-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .illustration-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0 1rem;
+    }
+
+    .illustration-wrap svg {
+      max-width: 180px;
+      height: auto;
+    }
+
+    .title-en {
+      font-family: Caveat, "Apple Chancery", cursive;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .title-zh {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .names {
+      font-family: Caveat, cursive;
+      font-size: 1.75rem;
+      color: var(--text);
+      margin: 0.5rem 0 0.35rem;
+    }
+
+    .invite-zh {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .info-block {
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--accent-light);
+      border-bottom: 1px solid var(--accent-light);
+    }
+
+    .info-row {
+      margin: 0.4rem 0;
+      font-family: "system-ui";
+      letter-spacing: 0.02em;
+    }
+
+    .info-label {
+      color: var(--accent);
+      font-weight: 600;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      margin-right: 0.5rem;
+    }
+
+    .theme-block {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .theme-zh {
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .theme-en {
+      font-family: Caveat, cursive;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .footer-row {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .to-line {
+      border-bottom: 1px solid var(--text);
+      display: inline-block;
+      min-width: 8em;
+    }
+
+    @media print {
+      body {
+        padding: 0.5in;
+        background: #fff;
+      }
+
+      .poster {
+        max-width: none;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 12px;
+      }
+
+      .poster::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="poster">
+    <section class="section header">
+      <div class="disco-wrap">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="url(#disco)" stroke="#1a1a1a" stroke-width="1.5" />
+          <defs>
+            <radialGradient id="disco" cx="0.3" cy="0.3" r="1">
+              <stop offset="0%" stop-color="#e8a0a0" />
+              <stop offset="30%" stop-color="#c45c5c" />
+              <stop offset="60%" stop-color="#a03a3a" />
+              <stop offset="100%" stop-color="#1a1a1a" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="title-en">We're Getting Married!</p>
+      <p class="title-zh">单身夜派对</p>
+      <p class="names">Bobby & Yang</p>
+      <p class="invite-zh">诚挚邀请你参加我们的婚前单身夜派对</p>
+    </section>
+
+    <section class="section illustration-wrap" aria-hidden="true">
+      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#1a1a1a" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <!-- 装饰星光与氛围元素 -->
+        <path d="M 20 50 L 22 55 L 27 57 L 22 59 L 20 64 L 18 59 L 13 57 L 18 55 Z" fill="#e8a0a0" stroke="none" />
+        <path d="M 180 60 L 181 63 L 184 64 L 181 65 L 180 68 L 179 65 L 176 64 L 179 63 Z" fill="#e8a0a0"
+          stroke="none" />
+        <circle cx="90" cy="15" r="1.5" fill="#c45c5c" stroke="none" />
+        <circle cx="110" cy="25" r="2" fill="#e8a0a0" stroke="none" />
+        <circle cx="30" cy="90" r="1.5" fill="#c45c5c" stroke="none" />
+        <circle cx="170" cy="100" r="2" fill="#e8a0a0" stroke="none" />
+
+        <!-- 音乐符号 -->
+        <path d="M 18 28 L 18 15 L 26 12 L 26 25" stroke-width="1" />
+        <ellipse cx="15" cy="29" rx="3" ry="2.5" fill="#1a1a1a" stroke="none" transform="rotate(-20 15 29)" />
+        <ellipse cx="23" cy="26" rx="3" ry="2.5" fill="#1a1a1a" stroke="none" transform="rotate(-20 23 26)" />
+
+        <path d="M 182 25 L 182 15 C 186 15 188 18 188 22" stroke-width="1" />
+        <ellipse cx="179" cy="26" rx="3" ry="2.5" fill="#1a1a1a" stroke="none" transform="rotate(-20 179 26)" />
+
+        <!-- ================= 新娘 (左侧) ================= -->
+        <!-- 头纱 (飘逸的长头纱，白色半透明填充 + 虚线边缘) -->
+        <path d="M 48 18 C 30 25 15 50 18 90 C 20 110 35 125 45 125 C 48 110 40 70 49 28 Z" fill="#ffffff"
+          fill-opacity="0.6" stroke-dasharray="3 4" stroke-width="1" />
+        <path d="M 48 18 C 35 25 25 60 30 100 C 35 115 45 120 52 120 C 50 100 48 60 52 28 Z" fill="#ffffff"
+          fill-opacity="0.4" stroke-dasharray="2 3" stroke-width="1" />
+
+        <!-- 头部与发型 -->
+        <!-- 侧脸轮廓与脖颈（圆润可爱风） -->
+        <path d="M 54 17.5 C 62 19 61 28 56 30 C 55 31 54 31.5 54 31.5 C 51 32 50 26 54 17.5 Z" fill="#F5F0E8"
+          stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round" />
+
+        <!-- 头发和盘发 (圆润) -->
+        <path d="M 54 17.5 C 48 16 45 24 50 28 C 52 29 55 27 56 25 C 52 24 50 20 54 17.5 Z" fill="#1a1a1a"
+          stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round" />
+        <circle cx="48" cy="23" r="3.5" fill="#1a1a1a" />
+
+        <!-- 眼睛（弯弯的笑眼） -->
+        <path d="M 56 24 C 57 23.5 58 24 58.5 25" fill="none" stroke="#1a1a1a" stroke-width="1"
+          stroke-linecap="round" />
+
+        <!-- 微笑的嘴 -->
+        <path d="M 57 27.5 C 58 27.5 58.5 28 59 28.5" fill="none" stroke="#1a1a1a" stroke-width="1"
+          stroke-linecap="round" />
+
+        <!-- 脸颊红晕 -->
+        <ellipse cx="55" cy="26.5" rx="1.5" ry="1" fill="#e8a0a0" stroke="none" opacity="0.8" />
+
+        <!-- 躯干 (修身上衣) -->
+        <path d="M 51 32 C 49 40 52 50 55 52 C 58 50 61 40 59 32 Z" />
+
+        <!-- 裙摆 (A字大裙摆，底部波浪) -->
+        <path d="M 51 51 C 35 75 25 115 32 125 C 42 130 68 130 78 125 C 85 115 75 75 59 51" fill="#F5F0E8" />
+
+        <!-- 裙摆褶皱线 -->
+        <path d="M 42 127 C 45 100 52 75 55 52" stroke-width="1" />
+        <path d="M 68 127 C 65 100 58 75 55 52" stroke-width="1" />
+        <path d="M 55 129 C 55 100 55 75 55 52" stroke-width="1" />
+
+        <!-- 高跟鞋尖 -->
+        <path d="M 52 128 L 50 133 L 55 133 L 56 128" />
+
+        <!-- ================= 新郎 (右侧) ================= -->
+        <!-- 头部与发型 -->
+        <!-- 侧脸轮廓与脖颈（圆润可爱风） -->
+        <path d="M 146 17.5 C 138 19 139 28 144 30 C 145 31 146 31.5 146 31.5 C 149 32 150 26 146 17.5 Z" fill="#F5F0E8"
+          stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round" />
+
+        <!-- 短发轮廓（利落圆润短发） -->
+        <path d="M 146 17.5 C 152 16 155 24 150 28 C 148 29 145 27 144 25 C 148 24 150 20 146 17.5 Z" fill="#1a1a1a"
+          stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round" />
+
+        <!-- 眼睛（弯弯的笑眼） -->
+        <path d="M 144 24 C 143 23.5 142 24 141.5 25" fill="none" stroke="#1a1a1a" stroke-width="1"
+          stroke-linecap="round" />
+
+        <!-- 微笑的嘴 -->
+        <path d="M 143 27.5 C 142 27.5 141.5 28 141 28.5" fill="none" stroke="#1a1a1a" stroke-width="1"
+          stroke-linecap="round" />
+
+        <!-- 脸颊红晕 -->
+        <ellipse cx="145" cy="26.5" rx="1.5" ry="1" fill="#e8a0a0" stroke="none" opacity="0.8" />
+
+        <!-- 躯干 (西装外套：黑色填充) -->
+        <path d="M 141 32 C 137 45 137 58 145 58 C 153 58 153 45 149 32 Z" fill="#1a1a1a" />
+
+        <!-- 西装翻领内衬 (V字领) -->
+        <path d="M 142 32 L 145 42 L 148 32 Z" fill="#F5F0E8" stroke="none" />
+
+        <!-- 领结 (红色点缀) -->
+        <path d="M 142 34 L 148 36 L 148 32 L 142 34 Z" fill="#c45c5c" stroke="#c45c5c" stroke-width="1"
+          stroke-linejoin="miter" />
+
+        <!-- 裤腿 (西裤：黑色填充) -->
+        <path d="M 139 56 C 135 80 130 115 130 125 L 138 125 C 138 115 142 80 145 58 Z" fill="#1a1a1a" />
+        <path d="M 145 58 C 148 80 152 115 152 125 L 160 125 C 160 115 155 80 151 56 Z" fill="#1a1a1a" />
+
+        <!-- 皮鞋 -->
+        <path d="M 138 125 L 138 129 L 122 129 L 126 125 Z" fill="#1a1a1a" />
+        <path d="M 152 125 L 152 129 L 168 129 L 164 125 Z" fill="#1a1a1a" />
+
+        <!-- ================= 手臂与牵手 ================= -->
+        <!-- 新娘抬起的左臂 -->
+        <path d="M 53 35 C 38 40 28 28 32 15" />
+        <!-- 新郎抬起的右臂 -->
+        <path d="M 147 35 C 162 40 172 28 168 15" />
+
+        <!-- 新娘伸出的右臂 -->
+        <path d="M 57 36 C 70 46 85 45 100 40" />
+        <!-- 新郎伸出的左臂 -->
+        <path d="M 143 36 C 130 46 115 45 100 40" />
+
+        <!-- 两人中心牵手处 (红色小爱心) -->
+        <path d="M 100 42 C 96 38 98 35 100 37 C 102 35 104 38 100 42 Z" fill="#c45c5c" stroke="#c45c5c"
+          stroke-width="1" />
+      </svg>
+    </section>
+
+    <section class="section info-block">
+      <div class="info-row"><span class="info-label">时间</span> 2025年X月X日 周X XX:00 起</div>
+      <div class="info-row"><span class="info-label">地点</span> XX市XX区 XX路</div>
+      <div class="info-row"><span class="info-label">活动</span> 派对 · 唱K · 桌游 · 泳池 · 才艺小舞台 · 畅饮</div>
+    </section>
+
+    <section class="section theme-block">
+      <p class="theme-zh">祝 有爱者更爱 独立者更自由</p>
+      <p class="theme-en">May the loved love more, and the independent become free.</p>
+    </section>
+
+    <section class="section footer-row">
+      To: <span class="to-line"></span>
+    </section>
+  </main>
+</body>
+
+</html>
