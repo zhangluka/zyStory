@@ -17,10 +17,18 @@ const config: Config = {
         border: "#BAE6FD",
         "card-bg": "#FFFFFF",
         accent: "#06B6D4",
+        typewriter: {
+          bg: "var(--typewriter-bg)",
+          paper: "var(--typewriter-paper)",
+          ink: "var(--typewriter-ink)",
+          accent: "var(--typewriter-accent)",
+          border: "var(--typewriter-border)",
+        },
       },
       fontFamily: {
         archivo: ["var(--font-archivo)", "sans-serif"],
         sans: ["var(--font-space-grotesk)", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
     },
   },

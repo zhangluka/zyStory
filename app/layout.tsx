@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Archivo, Space_Grotesk } from "next/font/google";
+import { Archivo, Space_Grotesk, Noto_Serif_SC } from "next/font/google";
 import { Toaster } from "sonner";
+import { TypewriterSoundProvider } from "@/contexts/TypewriterSoundContext";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -15,6 +16,13 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const notoSerifSC = Noto_Serif_SC({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Love Diary",
   description: "记录我们的美好瞬间",
@@ -26,10 +34,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`${archivo.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="zh-CN"
+      className={`${archivo.variable} ${spaceGrotesk.variable} ${notoSerifSC.variable}`}
+    >
       <body className="min-h-screen font-sans">
-        {children}
-        <Toaster position="top-right" richColors />
+        <TypewriterSoundProvider>
+          {children}
+          <Toaster position="top-right" richColors />
+        </TypewriterSoundProvider>
       </body>
     </html>
   );

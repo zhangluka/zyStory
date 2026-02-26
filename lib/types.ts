@@ -12,3 +12,8 @@ export interface GalleryItem {
   src: string;
   caption: string;
 }
+
+export type PaperContent =
+  | { type: "memory"; data: Memory }
+  | { type: "gallery"; data: GalleryItem }
+  | null;
