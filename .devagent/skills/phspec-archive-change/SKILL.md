@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.3"
+  generatedBy: "0.0.4"
 ---
 
 在实验性工作流中归档已完成的变更。

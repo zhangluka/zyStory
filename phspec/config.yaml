@@ -1,4 +1,4 @@
-schema: spec-driven
+schema: lean-sdd
 
 # 项目上下文（可选）
 # 创建制品时会展示给 AI。

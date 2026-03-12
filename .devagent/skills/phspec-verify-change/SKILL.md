@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.3"
+  generatedBy: "0.0.4"
 ---
 
 校验实现是否与变更制品（规范、任务、设计）一致。

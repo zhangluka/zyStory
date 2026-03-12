@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.3"
+  generatedBy: "0.0.4"
 ---
 
 引导用户完成第一次完整的 PhSpec 工作流循环。这是一次教学式体验——你会在其代码库中做真实操作，并逐步讲解。

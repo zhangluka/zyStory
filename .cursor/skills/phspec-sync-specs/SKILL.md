@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.3"
+  generatedBy: "0.0.4"
 ---
 
 将变更中的增量规范同步到主规范。
