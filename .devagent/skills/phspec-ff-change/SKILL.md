@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.2"
+  generatedBy: "0.0.3"
 ---
 
 快进式创建制品——一次性生成实施所需全部制品。
@@ -17,8 +17,10 @@ metadata:
 
 1. **若未提供明确输入，先问用户要做什么**
 
-   使用 **AskUserQuestion 工具**（开放问题）询问：
+   使用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent）（开放问题）询问：
    > "你想做哪个变更？描述你想做或要修的内容。"
+
+   若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出该问题并写明「请回复后再继续」，不要自行假设名称后继续。
 
    从其描述推导 kebab-case 名称（如 "add user authentication" → `add-user-auth`）。
 
@@ -57,7 +59,7 @@ metadata:
       - 每创建一个制品后重跑 `phspec status --change "<name>" --json`
       - 当 `applyRequires` 中每个 ID 在 artifacts 中均为 `status: "done"` 时停止
 
-   c. **若某制品需要用户输入**（上下文不清）：用 **AskUserQuestion 工具** 澄清后继续
+   c. **若某制品需要用户输入**（上下文不清）：用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 澄清后继续；若环境无该工具，直接输出问题并写明「请回复后再继续」，不要自行假设后继续。
 
 5. **展示最终状态**
    ```bash

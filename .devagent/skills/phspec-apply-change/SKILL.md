@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.2"
+  generatedBy: "0.0.3"
 ---
 
 按 PhSpec 变更实施任务。
@@ -20,7 +20,7 @@ metadata:
    若提供了名称则用该名称。否则：
    - 用户提到过某变更则从上下文推断
    - 仅有一个进行中变更则自动选中
-   - 有歧义时运行 `phspec list --json` 获取列表，用 **AskUserQuestion 工具** 让用户选择
+   - 有歧义时运行 `phspec list --json` 获取列表，用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择。若环境无 AskUserQuestion 或 ask_followup_question，直接输出变更选项并写明「请回复后再继续」，不要自行假设。
 
    始终说明：「当前变更：<name>」，以及如何切换（如 `/phsx:apply <其他>`）。
 
@@ -67,9 +67,9 @@ metadata:
    - 在任务文件中勾选完成：`- [ ]` → `- [x]`
    - 继续下一项
 
-   **以下情况暂停：**
-   - 任务不清晰 → 先澄清
-   - 实施暴露出设计问题 → 建议更新制品
+   **以下情况必须暂停**（不要自行假设或继续下一项任务）：
+   - 任务不清晰 → 先澄清；若环境无 AskUserQuestion 或 ask_followup_question，直接输出问题并写明「请回复后再继续」
+   - 实施暴露出设计问题 → 建议更新制品并等待指示
    - 报错或受阻 → 说明并等待指示
    - 用户打断
 
@@ -129,9 +129,9 @@ metadata:
 ```
 
 **边界**
-- 按任务顺序做到完成或受阻
+- 按任务顺序做到完成或受阻；遇需暂停的情形必须停止，等用户回复后再继续。
 - 开始前先读 apply 指令中的上下文文件
-- 任务不明确时先暂停询问再实施
+- 任务不明确时先暂停询问再实施；若环境无用户确认工具，直接输出问题并写明「请回复后再继续」
 - 实施暴露出问题时暂停并建议更新制品
 - 代码改动保持最小、限定在当前任务
 - 每完成一项立即勾选

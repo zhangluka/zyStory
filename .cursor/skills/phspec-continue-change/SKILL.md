@@ -6,10 +6,12 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.2"
+  generatedBy: "0.0.3"
 ---
 
 继续当前变更：创建下一个制品。
+
+**执行约定（DevAgent / Cline 等）**：本技能每次调用**只创建一个制品**。创建完该制品后必须先调用用户确认工具（DevAgent：`ask_followup_question`；Cursor 等：`AskUserQuestion`）询问是否继续或要修改，**调用后立即结束本次执行**。不得在本轮中连续创建第二个制品。
 
 **输入**：可指定变更名。未指定时从对话上下文推断；若含糊或有歧义，必须让用户从可用变更中选择。
 
@@ -17,7 +19,7 @@ metadata:
 
 1. **若未提供变更名，让用户选择**
 
-   运行 `phspec list --json` 获取按最近修改排序的变更列表，再用 **AskUserQuestion 工具** 让用户选择要继续的变更。
+   运行 `phspec list --json` 获取按最近修改排序的变更列表，再用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择要继续的变更。若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出 3～4 个变更选项并写明「请回复后再继续」，不要猜测或自动选变更。
 
    将最近修改的 3～4 个变更作为选项展示，包含：
    - 变更名
@@ -68,8 +70,10 @@ metadata:
      - 按 `template` 填好各节
      - 写作时遵守 `context` 与 `rules`，但不要原样抄进文件
      - 写入指令中的 outputPath
-   - 说明创建了什么、接下来可做哪些
-   - 创建完一个制品后即停止
+   - 说明创建了什么、接下来可做哪些。然后**必须结束本次执行**：
+     - **在 DevAgent 中**：必须先调用 **`ask_followup_question`**，例如：「已创建 <artifact-id>。要修改刚写的内容，还是继续创建下一个制品？回复继续或说明要改的地方。」**调用后立即结束**，不得在本轮中创建下一个制品。
+     - **在 Cursor 等环境中**：使用 **AskUserQuestion** 等价操作后结束。
+     - **若环境无上述工具**：输出上述问题文字并写明「请回复后再继续」，然后结束。
 
    ---
 
@@ -96,7 +100,7 @@ metadata:
 制品类型与用途由模式决定。以指令输出中的 `instruction` 为准。
 
 常见模式（spec-driven）：proposal → specs → design → tasks
-- **proposal.md**：若不清楚可先问用户，填写 Why、What Changes、Capabilities、Impact。Capabilities 很关键，每项能力对应一个 spec 文件。
+- **proposal.md**：若不清楚可先问用户，填写 Why、What Changes、Capabilities、Impact。Capabilities 很关键，每项能力对应一个 spec 文件。若环境无 AskUserQuestion 或 ask_followup_question，直接输出问题并写明「请回复后再继续」，不要自行假设后继续。
 - **specs/<capability>/spec.md**：按提案 Capabilities 每项建一个规范（用能力名，不是变更名）。
 - **design.md**：记录技术决策、架构与实现思路。
 - **tasks.md**：把实现拆成可勾选任务。
@@ -104,7 +108,7 @@ metadata:
 其他模式以 CLI 输出的 `instruction` 为准。
 
 **边界**
-- 每次调用只创建一个制品
+- 每次调用**仅**创建一个制品；创建完一个制品后必须停止，等用户说「继续」或再次调用本技能后再创建下一个；不得在本轮中连续创建多个制品。
 - 创建新制品前先读依赖制品
 - 不跳过、不乱序
 - 上下文不清时先问用户

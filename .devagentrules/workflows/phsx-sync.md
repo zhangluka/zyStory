@@ -10,7 +10,7 @@
 
 **步骤**
 
-1. **若未提供变更名，让用户选择**：运行 `phspec list --json`，用 **AskUserQuestion 工具** 让用户选择。只展示在 `specs/` 下有增量规范的变更。**重要**：不要猜测或自动选择。
+1. **若未提供变更名，让用户选择**：运行 `phspec list --json`，用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择。只展示在 `specs/` 下有增量规范的变更。若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出变更选项并写明「请回复后再继续」，不要猜测或自动选择。**重要**：不要猜测或自动选择。
 
 2. **定位增量规范**：在 `phspec/changes/<name>/specs/*/spec.md` 查找增量规范文件。若未找到则告知用户并停止。
 

@@ -10,7 +10,7 @@
 
 1. **若未提供明确输入，先问用户要做什么**
 
-   用 **AskUserQuestion 工具** 询问并推导 kebab-case 名称。**重要**：未弄清用户要做什么前不要继续。
+   用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 询问并推导 kebab-case 名称。若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出问题并写明「请回复后再继续」，不要自行假设后继续。**重要**：未弄清用户要做什么前不要继续。
 
 2. **创建变更目录**
    ```bash
@@ -26,7 +26,7 @@
 
 4. **按顺序创建制品直至可实施**
 
-   用 **TodoWrite 工具** 跟踪进度。按依赖顺序遍历：对每个 `ready` 制品运行 `phspec instructions <artifact-id> --change "<name>" --json`，解析 context/rules/template/instruction/outputPath/dependencies；先读依赖制品，按 template 创建文件，遵守 context 与 rules 但不抄入文件；简要提示「✓ 已创建 <artifact-id>」。每创建一个制品后重跑 status，当 `applyRequires` 中制品均为 `done` 时停止。若某制品需用户输入则用 AskUserQuestion 澄清后继续。
+   用 **TodoWrite 工具** 跟踪进度。按依赖顺序遍历：对每个 `ready` 制品运行 `phspec instructions <artifact-id> --change "<name>" --json`，解析 context/rules/template/instruction/outputPath/dependencies；先读依赖制品，按 template 创建文件，遵守 context 与 rules 但不抄入文件；简要提示「✓ 已创建 <artifact-id>」。每创建一个制品后重跑 status，当 `applyRequires` 中制品均为 `done` 时停止。若某制品需用户输入则用 AskUserQuestion 或 ask_followup_question 澄清后继续；若环境无该工具，直接输出问题并写明「请回复后再继续」，不要自行假设后继续。
 
 5. **展示最终状态**
    ```bash

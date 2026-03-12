@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.2"
+  generatedBy: "0.0.3"
 ---
 
 校验实现是否与变更制品（规范、任务、设计）一致。
@@ -17,7 +17,7 @@ metadata:
 
 1. **若未提供变更名，让用户选择**
 
-   运行 `phspec list --json` 获取变更列表，用 **AskUserQuestion 工具** 让用户选择。展示有实施任务（存在 tasks 制品）的变更、各变更所用工作流模式，未完成任务标为「进行中」。**重要**：不要猜测或自动选择，始终让用户选择。
+   运行 `phspec list --json` 获取变更列表，用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择。展示有实施任务（存在 tasks 制品）的变更、各变更所用工作流模式，未完成任务标为「进行中」。若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出变更选项并写明「请回复后再继续」，不要猜测或自动选择。**重要**：不要猜测或自动选择，始终让用户选择。
 
 2. **查看状态以了解工作流**
    ```bash

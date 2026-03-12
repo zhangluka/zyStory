@@ -6,7 +6,7 @@ compatibility: Requires phspec CLI.
 metadata:
   author: phspec
   version: "1.0"
-  generatedBy: "0.0.2"
+  generatedBy: "0.0.3"
 ---
 
 将变更中的增量规范同步到主规范。
@@ -19,7 +19,7 @@ metadata:
 
 1. **若未提供变更名，让用户选择**
 
-   运行 `phspec list --json` 获取变更列表，用 **AskUserQuestion 工具** 让用户选择。只展示在 `specs/` 下有增量规范的变更。
+   运行 `phspec list --json` 获取变更列表，用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择。只展示在 `specs/` 下有增量规范的变更。若所在环境没有 AskUserQuestion 或 ask_followup_question 等用户确认工具，请直接输出变更选项并写明「请回复后再继续」，不要猜测或自动选择。
 
    **重要**：不要猜测或自动选择，始终让用户选择。
 

@@ -11,7 +11,7 @@ description: 归档前校验实现是否与变更制品一致
 
 **步骤**
 
-1. **若未提供变更名，让用户选择**：运行 `phspec list --json`，用 **AskUserQuestion 工具** 让用户选择。展示有实施任务（存在 tasks 制品）的变更、各变更所用工作流模式，未完成任务标为「进行中」。**重要**：不要猜测或自动选择。
+1. **若未提供变更名，让用户选择**：运行 `phspec list --json`，用 **AskUserQuestion**（Cursor 等）或 **ask_followup_question**（DevAgent） 让用户选择。展示有实施任务（存在 tasks 制品）的变更、各变更所用工作流模式，未完成任务标为「进行中」。若环境无该工具，直接输出变更选项并写明「请回复后再继续」，不要猜测或自动选择。**重要**：不要猜测或自动选择。
 
 2. **查看状态以了解工作流**：`phspec status --change "<name>" --json`，解析 `schemaName` 及该变更有哪些制品。
 
